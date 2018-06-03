@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Dashboard</title>
+    <link rel="icon" type="image/png" href="assets/img/favicon.png" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/twbs/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="vendor/mdb/mdb.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="assets/css/style.min.css" rel="stylesheet">
+      
+    <style>
+        #loader {
+        transition: all 0.3s ease-in-out;
+        opacity: 1;
+        visibility: visible;
+        position: fixed;
+        height: 100vh;
+        width: 100%;
+        background: #fbf9ff;
+        z-index: 90000;
+        }
+        #loader.fadeOut {
+            opacity: 0;
+            visibility: hidden;
+        }
+        .spinner {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            top: calc(50% - 20px);
+            left: calc(50% - 20px);
+            background-color: #333;
+            border-radius: 100%;
+            -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
+            animation: sk-scaleout 1.0s infinite ease-in-out;
+        }
+        @-webkit-keyframes sk-scaleout {
+            0% { -webkit-transform: scale(0) }
+            100% {
+            -webkit-transform: scale(1.0);
+            opacity: 0;
+            }
+        }
+        @keyframes sk-scaleout {
+            0% {
+            -webkit-transform: scale(0);
+            transform: scale(0);
+            } 100% {
+            -webkit-transform: scale(1.0);
+            transform: scale(1.0);
+            opacity: 0;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id='loader'>
+        <div class="spinner"></div>
+    </div>
+    
+    <script>
+        window.addEventListener('load', () => {
+        const loader = document.getElementById('loader');
+        setTimeout(() => {
+            loader.classList.add('fadeOut');
+        }, 300);
+        });
+    </script>
+
+    <div class="wrapper">
+        <!-- Nav -->
+        <nav class="z-depth-2" id="sidebar">
+
+            <div class="sidebar-header">
+                <a href="./">
+                    <h3 class="text-center">LOTA</h3>
+                    <strong>
+                        <img src="assets/img/logo.png" class="img-fluid" alt="logo">
+                    </strong>
+                </a>
+            </div>
+
+            <ul class="list-unstyled">
+                <li>
+                    <li>
+                        <a href="./">
+                            <i class="fas fa-server"></i>
+                            Instances
+                        </a>
+                    </li>
+                <li>
+                    <a href="bills.html">
+                        <i class="fas fa-money-bill-alt"></i>
+                        Bills
+                    </a>
+                </li>
+                <li>
+                    <a href="budgets.html">
+                        <i class="fas fa-piggy-bank"></i>
+                        Budgets
+                    </a>
+                </li>
+                <li>
+                    <a href="users.html">
+                        <i class="fas fa-user-tag"></i>
+                        Users
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-envelope"></i>
+                        Contact
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-question-circle"></i>
+                        FAQ
+                    </a>
+                </li>
+                <li>
+                    <a href="#Submenu" data-toggle="collapse" aria-expanded="false">
+                        <i class="fas fa-child"></i>
+                        About
+                    </a>
+                    <ul class="collapse list-unstyled" id="Submenu">
+                        <li>
+                            <a href="#">About 1</a>
+                        </li>
+                        <li>
+                            <a href="#">About 2</a>
+                        </li>
+                        <li>
+                            <a href="#">About 3</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="list-unstyled cta">
+                <li><a href="https://perso.raspgot.fr/dashboard/download/dashboard.rar" class="download text-center">Download code for <i class="fab fa-windows fa-lg ml-1"></i></a></li>
+                <li><a href="https://perso.raspgot.fr/dashboard/download/dashboard.tar.gz" class="download text-center">Download code for <i class="fab fa-linux fa-lg ml-1"></i></a></li>
+            </ul>
+        </nav>
+        <!-- /.Nav -->
+
+        <!-- Content -->
+        <div id="content">
+
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+
+                    <div class="navbar-header">
+                        <button type="button" id="sidebarCollapse" class="btn btn-info">
+                            <i class="fas fa-align-left"></i>
+                        </button>
+                    </div>
+
+                    <form class="form-inline">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Rechercher" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+                    </form>
+
+                </div>
+            </nav>
+
+            <h2>Courbe d'évolution de la valeur de l'instance 1</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            
+            <!-- Bills -->
+            <div class="row">
+                <div class="col-sm-6 m-5">
+                    <canvas class="z-depth-1" id="bills"></canvas>
+                </div>
+            </div>
+            <button id='line' class="btn btn-info ml-lg-5">Line</button>
+            <button id='bar' class="btn btn-info">Bar</button>
+            <!-- /.Bills -->
+
+
+        </div>
+        <!-- /.Content -->
+    </div>
+
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery-3.3.1.min.js"></script>
+    <!-- Bootstrap Js -->
+    <script src="vendor/twbs/bootstrap.min.js"></script>
+    <!-- MDB Js -->
+    <script src="vendor/mdb/mdb.min.js"></script>
+    <!-- Chart JS -->
+    <script src="vendor/chart/chart.min.js"></script>
+    <!-- Stupidtable JS -->
+    <script src="vendor/stupidtable/stupidtable.min.js"></script>
+    <!-- Custom JS -->
+    <script type="text/javascript" src="assets/js/bills.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //sidebar
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+            //stupidtable
+            $("#items_table").stupidtable();
+        });
+    </script>
+
+</body>
+
+</html>
